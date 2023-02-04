@@ -1,13 +1,9 @@
-# update this to demonstrate usage 
-# of the module. If there are more 
-# than one examples that you want 
-# to demonstrate, create additional files in
-# this directory and name them logically. 
+module "lb_listener_rule" {
+  source = "github.com/NCI-CTOS/terraform-aws-lb-listener-rule"
 
-module "this" {
-  source = "../"
-
-  app         = "example"
-  environment = "dev"
-  program     = "example"
+  condition_host_header  = ["my-app.my-domain.gov"]
+  condition_path_pattern = ["/"]
+  listener_arn           = aws_lb_listener.example.arn
+  priority               = 99
+  target_group_arn       = aws_lb_target_group.example.arn
 }
