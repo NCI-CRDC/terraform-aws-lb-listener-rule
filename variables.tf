@@ -11,16 +11,16 @@ variable "condition_path_pattern" {
 }
 
 variable "listener_arn" {
-  type = string 
+  type        = string
   description = "arn of the load balancer listener to forward traffic from"
 }
 
 variable "priority" {
-  type = number
+  type        = number
   description = "priority for the rule between 1 and 50000 - higher value means higher priority"
 }
 
 variable "target_group_arn" {
-  type = string 
+  type        = string
   description = "arn of the target group to forward traffic to"
 }
