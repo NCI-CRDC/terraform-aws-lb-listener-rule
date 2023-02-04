@@ -1,26 +1,26 @@
-variable "app" {
-  type        = string
-  description = "the name of the application expressed as an acronym"
-  sensitive   = false
+variable "condition_host_header" {
+  type        = list(string)
+  description = "contains a single value item which is a list of host header patterns to match"
+  default     = []
 }
 
-variable "env" {
-  type        = string
-  description = "the target tier ('dev', 'qa', 'stage', or 'prod'.)"
-  sensitive   = false
-
-  validation {
-    condition     = contains(["dev", "qa", "stage", "prod", "nonprod"], var.env)
-    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', and 'nonprod'"
-  }
+variable "condition_path_pattern" {
+  type        = list(string)
+  description = "Contains a single value item which is a list of path patterns to match against the request URL"
+  default     = []
 }
-variable "program" {
-  type        = string
-  description = "the program associated with the application"
-  sensitive   = false
 
-  validation {
-    condition     = contains(["crdc", "ccdi", "ctos"], var.program)
-    error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
-  }
+variable "listener_arn" {
+  type = string 
+  description = "arn of the load balancer listener to forward traffic from"
+}
+
+variable "priority" {
+  type = number
+  description = "priority for the rule between 1 and 50000 - higher value means higher priority"
+}
+
+variable "target_group_arn" {
+  type = string 
+  description = "arn of the target group to forward traffic to"
 }
