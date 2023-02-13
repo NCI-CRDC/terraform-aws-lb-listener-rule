@@ -13,7 +13,7 @@ resource "aws_lb_listener_rule" "this" {
 
     content {
       host_header {
-        values = [var.condition_host_header]
+        values = var.condition_host_header
       }
     }
   }
@@ -23,7 +23,7 @@ resource "aws_lb_listener_rule" "this" {
 
     content {
       path_pattern {
-        values = [var.condition_path_pattern]
+        values = var.condition_path_pattern
       }
     }
   }
